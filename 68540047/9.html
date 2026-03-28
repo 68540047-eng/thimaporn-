@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>เครื่องคิดเลข</title>
+    <style>
+        body { 
+            background-color: #e0f7fa; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: white;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        input { margin: 5px; padding: 10px; width: 200px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 15px; cursor: pointer; font-weight: bold; border-radius: 5px; border: 1px solid #ccc; margin: 2px; }
+        button:hover { background-color: #f0f0f0; }
+        #result { font-size: 24px; color: blue; margin-top: 20px; min-height: 30px; }
+        #error { color: red; font-size: 14px; margin-top: 10px; height: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>เครื่องคิดเลข</h2>
+
+    <input type="number" id="n1" placeholder="ตัวเลขที่ 1"><br>
+    <input type="number" id="n2" placeholder="ตัวเลขที่ 2"><br><br>
+
+    <button onclick="cal('+')">+</button>
+    <button onclick="cal('-')">-</button>
+    <button onclick="cal('*')">*</button>
+    <button onclick="cal('/')">/</button>
+    
+    <button onclick="clearAll()" style="background-color: #ffcdd2;">Clear</button>
+
+    <div id="result">ผลลัพธ์: ?</div>
+    <div id="error"></div>
+</div>
+
+<script>
+function cal(op) { 
+    let v1 = document.getElementById("n1").value;
+    let v2 = document.getElementById("n2").value;
+    let res = document.getElementById("result");
+    let err = document.getElementById("error");
+
+    err.innerHTML = "";
+
+    if (v1 === "" || v2 === "") {
+        err.innerHTML = "กรุณากรอกตัวเลขให้ครบทั้ง 2 ช่อง!";

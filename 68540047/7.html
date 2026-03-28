@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แปลงเวลา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { padding: 5px; width: 150px; }
+        button { padding: 5px 15px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; }
+        
+        .btn-clear { background-color: #f44336; color: white; border: none; border-radius: 4px; }
+        .btn-convert { background-color: #4CAF50; color: white; border: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<h2>แปลงรูปแบบเวลา (hh:mm:ss)</h2>
+
+<input type="text" id="timeInput" placeholder="เช่น 12:30:45">
+<button class="btn-convert" onclick="convertTime()">แสดงผล</button>
+<button class="btn-clear" onclick="clearFields()">ล้างข้อมูล</button>
+
+<p id="result"></p>
+
+<script>
+function convertTime() {
+    let t = document.getElementById("timeInput").value;
+    let res = document.getElementById("result");
+    
+    let arr = t.split(":");
+
+    
+    if (arr.length !== 3 || t.trim() === "") {
+        res.innerHTML = "กรุณากรอกรูปแบบให้ถูกต้อง (hh:mm:ss)";
+        res.style.color = "red";
+        return;
+    }
+
+    let hh = arr[0].trim();
+    let mm = arr[1].trim();
+    let ss = arr[2].trim();
+
+   
+    res.innerHTML = `${hh} ชั่วโมง ${mm} นาที ${ss} วินาที`;
+    res.style.color = "green";
+}
+
+
+function clearFields() {
+    document.getElementById("timeInput").value = ""; 
+    document.getElementById("result").innerHTML = ""; 
+}
+</script>
+
+</body>
+</html>
